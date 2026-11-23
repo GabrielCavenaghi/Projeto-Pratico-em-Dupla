@@ -38,18 +38,13 @@ int main(void) {
                 break;
             case 3:
                 printf("Codigo: ");
-                scanf("%d", &codigo);
+                if (scanf("%d", &codigo) != 1) {
+                    limparBuffer();
+                    printf("Codigo invalido.\n");
+                    break;
+                }
                 limparBuffer();
                 j = buscar(vetor, codigo);
-                if (j != NULL) {
-                    printf("Codigo: %d\nTitulo: %s\nDesenvolvedora: %s\n"
-                           "Preco: R$ %.2f\nHoras jogadas: %d\n",
-                           j->codigo, j->titulo, j->desenvolvedora,
-                           j->preco, j->horasJogadas);
-                } else {
-                    printf("Jogo nao encontrado.\n");
-                }
-                break;
             case 4:
                 relatorio(vetor);
                 break;
